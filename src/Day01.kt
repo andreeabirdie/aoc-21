@@ -2,14 +2,14 @@ fun main() {
     fun part1(input: List<String>): Int {
         var lastDepth: Int? = null
         var increaseCounter = 0
-    
+
         input.forEach {
             it.toInt().let { currentDepth ->
                 lastDepth?.let { if (it < currentDepth) increaseCounter++ }
                 lastDepth = currentDepth
             }
         }
-    
+
         return increaseCounter
     }
 
@@ -18,14 +18,13 @@ fun main() {
         var increaseCounter = 0
 
         for (i in 3 until input.size) {
-            if(input[i].toInt() > input[i-3].toInt()) increaseCounter++
+            if (input[i].toInt() > input[i - 3].toInt()) increaseCounter++
         }
 
         return increaseCounter
     }
 
 
-    // test if implementation meets criteria from the description, like:
     val input = readInput("Day01")
     println(part1(input))
     println(part2(input))
