@@ -1,16 +1,31 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.size
+        var lastDepth: Int? = null
+        var increaseCounter = 0
+    
+        input.forEach {
+            it.toInt().let { currentDepth ->
+                lastDepth?.let { if (it < currentDepth) increaseCounter++ }
+                lastDepth = currentDepth
+            }
+        }
+    
+        return increaseCounter
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
+        //current and last slides have 2 values in common, it's enough to compare i and i+3 values
+        var increaseCounter = 0
+
+        for (i in 3 until input.size) {
+            if(input[i].toInt() > input[i-3].toInt()) increaseCounter++
+        }
+
+        return increaseCounter
     }
 
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
 
+    // test if implementation meets criteria from the description, like:
     val input = readInput("Day01")
     println(part1(input))
     println(part2(input))
