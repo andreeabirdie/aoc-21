@@ -35,8 +35,6 @@ fun main() {
             }
         }
         return x * y
-
-        return 0
     }
 
 
